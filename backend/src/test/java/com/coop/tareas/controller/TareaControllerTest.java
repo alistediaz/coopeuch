@@ -138,8 +138,9 @@ public class TareaControllerTest {
 	            .fechaCreacion(null)
 	            .vigente(false)
 	            .build();
-	
-	    Mockito.when(tareaRepository.findById(updatedTarea.getId())).thenReturn(null);
+	    
+	    Optional<Tarea> optionalRecord = tareaRepository.findById(updatedTarea.getId());
+	    Mockito.when(tareaRepository.findById(updatedTarea.getId())).thenReturn(optionalRecord);
 	
 	    MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/tareas")
 	            .contentType(MediaType.APPLICATION_JSON)
@@ -166,7 +167,9 @@ public class TareaControllerTest {
 
 	@Test
 	public void deleteTareaById_notFound() throws Exception {
-	    Mockito.when(tareaRepository.findById(30)).thenReturn(null);
+	    Optional<Tarea> optionalRecord = tareaRepository.findById(30);
+
+	    Mockito.when(tareaRepository.findById(30)).thenReturn(optionalRecord);
 
 	    mockMvc.perform(MockMvcRequestBuilders
 	            .delete("/tareas/30")
