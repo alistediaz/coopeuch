@@ -153,6 +153,7 @@ body {
   font-size: 1.4rem;
   color: #338050;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .card .btns button:focus {

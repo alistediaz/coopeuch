@@ -3,18 +3,18 @@ import { addNewTarea } from "../redux/tareaSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Tareas = () => {
-  const [tarea, setTarea] = useState("")
-  const [vigente, setVigente] = useState(false)
-  const [disabledButton, setDisabledButton] = useState(false)
+  const [tarea, setTarea] = useState("");
+  const [vigente, setVigente] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(false);
   // @ts-ignore
-  const tareaStatus = useSelector((state) => state.status)
-  const dispatch = useDispatch()
+  const tareaStatus = useSelector((state) => state.status);
+  const dispatch = useDispatch();
 
   const add = async () => {
     if (tarea === "") {
       alert("Debe ingresar descripción de la tarea");
     } else {
-      setDisabledButton(true)
+      setDisabledButton(true);
       await dispatch(
         addNewTarea({
           descripcion: tarea,
@@ -28,9 +28,9 @@ export const Tareas = () => {
 
   useEffect(() => {
     if (tareaStatus === "idle" || tareaStatus === "succeeded") {
-      setDisabledButton(false)
+      setDisabledButton(false);
     }
-  }, [tareaStatus, dispatch]);
+  }, [tareaStatus]);
 
   const handleChange = (e) => {
     setTarea(e.target.value);
@@ -54,7 +54,11 @@ export const Tareas = () => {
         Vigente:
         <input type="checkbox" onChange={(e) => handleChangeVigente(e)} />
       </div>
-      <button className="add-btn" onClick={() => add()} disabled={disabledButton}>
+      <button
+        className="add-btn"
+        onClick={() => add()}
+        disabled={disabledButton}
+      >
         Nueva
       </button>
     </div>

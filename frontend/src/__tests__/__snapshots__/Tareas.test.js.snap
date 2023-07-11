@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tareas /> render 1`] = `
+<div
+  className="addTareas"
+>
+  <input
+    className="tarea-input"
+    maxLength={100}
+    onChange={[Function]}
+    title="Descripción"
+    type="text"
+    value=""
+  />
+  <div
+    className="vigente"
+  >
+    Vigente:
+    <input
+      onChange={[Function]}
+      type="checkbox"
+    />
+  </div>
+  <button
+    className="add-btn"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Nueva
+  </button>
+</div>
+`;

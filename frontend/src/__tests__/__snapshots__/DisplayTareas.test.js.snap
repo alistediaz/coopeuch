@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DisplayTareas /> render DisplayTareas 1`] = `
+<div
+  className="displaytareas"
+>
+  <ul />
+</div>
+`;

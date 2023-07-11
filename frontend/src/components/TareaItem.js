@@ -1,4 +1,7 @@
 import React, { useRef, useState } from "react";
+import { deleteTarea, updateTarea } from "../redux/tareaSlice";
+import { selectTareaById } from "../redux/tareaSlice";
+import { useDispatch, useSelector } from "react-redux";
 import {
   AiOutlineForm,
   AiFillSave,
@@ -7,12 +10,12 @@ import {
   AiOutlineStop,
 } from "react-icons/ai";
 
-const TareaItem = (props) => {
-  const { item, updateTarea, removeTarea } = props;
+export const TareaItem = (props) => {
+  const { item } = props;
   const [isEditing, setIsEditing] = useState(false);
-  const [tarea, setTarea] = useState(item.descripcion);
-  const [vigente, setVigente] = useState(item.vigente);
   const inputRef = useRef(true);
+  const tarea = useSelector((state) => selectTareaById(state, item.id));
+  const dispatch = useDispatch();
 
   const changeFocus = () => {
     inputRef.current.disabled = false;
@@ -20,25 +23,30 @@ const TareaItem = (props) => {
     setIsEditing(!isEditing);
   };
 
+  const callUpdateTarea = async (tarea) => {
+    await dispatch(updateTarea(tarea));
+  };
+
   const update = (id, value) => {
     if (value === "") {
       alert("Debe ingresar descripción de la tarea");
-      inputRef.current.value = tarea;
+      inputRef.current.value = tarea.descripcion;
     } else {
-      if (value !== tarea) {
-        //updateTarea({ id, tarea: value, vigente: vigente });
-        setTarea(value);
+      if (value !== tarea.descripcions) {
+        callUpdateTarea({ id, descripcion: value, vigente: tarea.vigente });
       }
       setIsEditing(false);
       inputRef.current.disabled = true;
     }
   };
 
-  const updateVigente = (item, e) => {
-    updateTarea({ ...item, vigente: e.target.checked });
-    setVigente(e.target.checked);
+  const updateVigente = (item) => {
+    callUpdateTarea({ ...item, vigente: !item.vigente });
   };
 
+  const eliminaTarea = async (tareaId) => {
+    await dispatch(deleteTarea(tareaId));
+  };
   return (
     <li
       key={item.id}
@@ -80,11 +88,7 @@ const TareaItem = (props) => {
           </button>
         )}
 
-        <button
-          style={{ color: "red" }}
-          onClick={() => removeTarea(item.id)}
-          title="Eliminar"
-        >
+        <button style={{ color: "red" }} onClick={() => eliminaTarea(item.id)} title="Eliminar">
           <AiOutlineDelete />
         </button>
       </div>
@@ -93,5 +97,3 @@ const TareaItem = (props) => {
     </li>
   );
 };
-
-export default TareaItem;
