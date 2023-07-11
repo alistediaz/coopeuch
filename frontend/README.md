@@ -2,6 +2,11 @@
 
 https://github.com/alistediaz/coopeuch/assets/26742492/d645bedb-1f3f-4a61-9c7e-7489df31130c
 
+# Ejecución de los unit tests:
+
+https://github.com/alistediaz/coopeuch/assets/26742492/5a76cf33-e5f9-490c-861a-fbcae6f2a33e
+
+
 ## Available Scripts
 
 In the project directory, you can run:
