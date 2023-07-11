@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Frontend en funcionamiento:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://github.com/alistediaz/coopeuch/assets/26742492/d645bedb-1f3f-4a61-9c7e-7489df31130c
 
 ## Available Scripts
 
