@@ -11,8 +11,6 @@
 - - Incluye controlador con las 4 funcionalidades CRUD
 - - Incluye unit tests
 - - Utiliza JPA para integrar con PostgreSQL
-- - Se incluyen scripts de volcado de base de datos
-- - API desarrollada en Java Spring Boot
 
 ## Carpetas
 
